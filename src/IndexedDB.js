@@ -199,8 +199,8 @@
                 if(indexArray){
                     for(let i = 0, j = indexArray.length; i < j; i++){
                         store.createIndex(
-                            indexArray[i].name,  // 索引
-                            indexArray[i].index, // 键值
+                            indexArray[i].name,   // 索引
+                            indexArray[i].index,  // 键值
                             {                     // 索引是否唯一
                                 unique: indexArray[i].unique ? indexArray[i].unique : false
                             });
@@ -276,7 +276,7 @@
         obj = obj instanceof Array ? obj : [obj];
         for(let i = 0, j = obj.length - 1; i <= j; i++){
             this.store.add(obj[i]);
-            if(i == j){
+            if(i === j){
                 console.log('数据添加成功');
                 IndexedDB._funIng = false;
             }
@@ -294,7 +294,7 @@
         obj = obj instanceof Array ? obj : [obj];
         for(let i = 0, j = obj.length - 1; i <= j; i++){
             this.store.put(obj[i]);
-            if(i == j){
+            if(i === j){
                 console.log('数据更新成功');
                 IndexedDB._funIng = false;
             }
@@ -312,7 +312,7 @@
         value = value instanceof Array ? value : [value];
         for(let i = 0, j = value.length - 1; i <= j; i++){
             this.store.delete(value[i]);
-            if(i == j){
+            if(i === j){
                 console.log('数据删除成功');
                 IndexedDB._funIng = false;
             }
