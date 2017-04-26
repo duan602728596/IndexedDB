@@ -13,7 +13,6 @@
      * '(5, 8)' 开区间
      * @param {String} range: 传递字符串
      * @return
-     *
      */
     function getRange(range) {
         let result = null;
