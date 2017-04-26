@@ -79,16 +79,29 @@ store.delete(value);
 ```
 String、Number或Array。
 
-### 11、清除ObjectStore
+### 11、查找数据
+```javascript
+store.get(key, callback);
+```
+
+### 12、清除ObjectStore
 ```javascript
 store.clear();
 ```
 
-### 12、游标
+### 13、游标
 ```javascript
 store.cursor(indexName, [range,] callback);
 ```
 range用来选择范围。  
+根据字符串返回游标查询的范围，例如：
+	* '5'      等于
+	* '>  5'   大于
+	* '>= 5'   大于等于
+	* '<  5'   小于
+	* '<= 5'   小于等于
+	* '[5, 8]' 闭区间
+	* '(5, 8)' 开区间
 callback回调函数。回调参数为result，result.value为获取的数据，result.continue()迭代。
 
 

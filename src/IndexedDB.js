@@ -78,7 +78,6 @@
      * success：创建或者连接的数据库成功后的回调函数
      * error：创建或者连接的数据库失败后的回调函数
      * upgradeneeded：数据库版本号更新后的回调函数
-     *
      */
 
     function IndexedDB(name, version, callbackObject = {}){
@@ -101,7 +100,6 @@
     /**
      * 删除数据库
      * @param {String} databaseName: 数据库名
-     *
      */
     IndexedDB.deleteDatabase = function(databaseName){
         IndexedDB.indexeddb.deleteDatabase(databaseName);
@@ -115,7 +113,6 @@
      * @param {String} name          : 创建或者连接的数据库名
      * @param {Number} version       : 数据库版本号
      * @param {Object} callbackObject: 配置回调函数
-     *
      */
     IndexedDB.prototype.Init = function (name, version, callbackObject){
 
@@ -159,7 +156,6 @@
         /**
          * xx秒后关闭数据库
          * @param {Number} time: 延迟关闭的时间
-         *
          */
         this.close = function(time = 100){
             const close = ()=>{
@@ -177,7 +173,6 @@
          * 判断是否有ObjectStore
          * @param {String} objectStoreName: ObjectStore名字
          * @return {Boolean}
-         *
          */
         this.hasObjectStore = function(objectStoreName){
             return this.db.objectStoreNames.contains(objectStoreName);
@@ -188,7 +183,6 @@
          * @param {String} objectStoreName: ObjectStore名字
          * @param {String} keyPath        : ObjectStore关键字
          * @param {Array} indexArray      : 添加索引和键值，name -> 索引， age -> 键值
-         *
          */
         this.createObjectStore = function(objectStoreName, keyPath, indexArray){
             if(!this.hasObjectStore(objectStoreName)){
@@ -217,7 +211,6 @@
         /**
          * 删除ObjectStore
          * @param {String} objectStoreName: ObjectStore名字
-         *
          */
 
         this.deleteObjectStore = function(objectStoreName){
@@ -234,7 +227,6 @@
          * 获取操作ObjectStore
          * @param {String} objectStoreName: ObjectStore名字
          * @param {Boolean} writeAble     : 只读还是读写
-         *
          */
         this.getObjectStore = function(objectStoreName, writeAble = true){
             return new ObjectStore(this.db, objectStoreName, writeAble);
@@ -269,7 +261,6 @@
     /**
      * 添加数据
      * @param {Object | Array} obj: 数组添加多个数据，object添加单个数据
-     *
      */
     ObjectStore.prototype.add = function(obj){
         IndexedDB._funIng = true;
@@ -287,7 +278,6 @@
     /**
      * 更新数据
      * @param {Object | Array} obj: 数组添加多个数据，object添加单个数据
-     *
      */
     ObjectStore.prototype.put = function(obj){
         IndexedDB._funIng = true;
@@ -305,7 +295,6 @@
     /**
      * 删除数据
      * @param {String | Number | Array} value: 数组添加多个数据，object添加单个数据
-     *
      */
     ObjectStore.prototype.delete = function(value){
         IndexedDB._funIng = true;
@@ -331,7 +320,6 @@
      * 获取数据
      * @param {String | Number} value: 键值
      * @param {Function} callback    : 获取成功的回调函数
-     *
      */
     ObjectStore.prototype.get = function(value, callback){
         const g = this.store.get(value);
@@ -355,7 +343,6 @@
      *
      * result.value
      * result.continue()
-     *
      */
     ObjectStore.prototype.cursor = function(indexName /*, range, callback */){
 
