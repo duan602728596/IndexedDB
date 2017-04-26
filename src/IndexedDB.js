@@ -93,9 +93,9 @@
 
     /* 兼容不同浏览器 */
     IndexedDB.indexeddb = _window.indexedDB
-                        || _window.webkitIndexedDB
-                        || _window.mozIndexedDB
-                        || _window.msIndexedDB;
+                       || _window.webkitIndexedDB
+                       || _window.mozIndexedDB
+                       || _window.msIndexedDB;
 
     /**
      * 删除数据库
