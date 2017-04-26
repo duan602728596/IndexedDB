@@ -83,6 +83,8 @@ String、Number或Array。
 ```javascript
 store.get(key, callback);
 ```
+callback回调函数。回调参数为result。
+
 
 ### 12、清除ObjectStore
 ```javascript
