@@ -15,7 +15,7 @@ callbackObject: 配置回调函数
 ```javascript
 IndexedDB(name, version, {
     success: function(et){
-	    const db = this.db; // 数据库实例
+        const db = this.db; // 数据库实例
     }
 });
 ```
