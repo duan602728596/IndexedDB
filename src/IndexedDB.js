@@ -29,7 +29,7 @@
 
             // 大于等于
             else if(/^\s*>\s*=\s*(-?\d+(\.\d+)?)\s*$/i.test(range)) {
-                result = IDBKeyRange.lowerBound(Number(range.match(/(-?\d+(\.\d+)?)/g)[0]),);
+                result = IDBKeyRange.lowerBound(Number(range.match(/(-?\d+(\.\d+)?)/g)[0]));
             }
 
             // 小于
