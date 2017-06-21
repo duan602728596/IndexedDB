@@ -8,19 +8,19 @@ const dirname = __dirname;
 
 
 function _ecma6(){
-    return gulp.src(`${ dirname }/src/*.js`)
-        .pipe(sourcemaps.init({
-            loadMaps: true
-        }))
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(utf8convert())
-        .pipe(bom())
-        .pipe(sourcemaps.write(`./`))
-        .pipe(gulp.dest(`${ dirname }/build`));
+  return gulp.src(`${ dirname }/src/*.js`)
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(utf8convert())
+    .pipe(bom())
+    .pipe(sourcemaps.write(`./`))
+    .pipe(gulp.dest(`${ dirname }/build`));
 }
 
 gulp.task('default', gulp.series(
-    gulp.parallel(_ecma6)
+  gulp.parallel(_ecma6)
 ));
