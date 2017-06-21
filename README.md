@@ -14,9 +14,9 @@ callbackObject: 配置回调函数
 创建成功后：
 ```javascript
 IndexedDB(name, version, {
-    success: function(et){
-        const db = this.db; // 数据库实例
-    }
+  success: function(et){
+    const db = this.db; // 数据库实例
+  }
 });
 ```
 
@@ -55,10 +55,10 @@ this.getObjectStore(objectStoreName, writeAble = true);
 例：
 ```javascript
 IndexedDB(name, version, {
-    success: function(){
-        const db = this.db;                                 // 数据库实例
-        const store = this.getObjectStore(objectStoreName); // ObjectStore实例
-    }
+  success: function(){
+    const db = this.db;                                 // 数据库实例
+    const store = this.getObjectStore(objectStoreName); // ObjectStore实例
+  }
 });
 ```
 
