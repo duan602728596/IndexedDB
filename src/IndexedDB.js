@@ -1,5 +1,11 @@
 ((factory)=>{
-  factory(window); // 函数工厂
+
+  if(typeof module === "object" && typeof module.exports === 'object'){
+    module.exports = factory(window);
+  }else{
+    window.IndexedDB = factory(window);
+  }
+
 })((_window)=>{
   /**
    * 获取IDBKeyRange
@@ -363,6 +369,6 @@
     return this;
   };
 
-  _window.IndexedDB = IndexedDB;
+  return IndexedDB;
 });
 
