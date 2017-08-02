@@ -94,9 +94,7 @@
     return new IndexedDB.prototype.Init(name, version, callbackObject);
   }
 
-  IndexedDB._funIng = false; // 是否有事件执行
-
-    /* 兼容不同浏览器 */
+  /* 兼容不同浏览器 */
   IndexedDB.indexeddb = _window.indexedDB
                      || _window.webkitIndexedDB
                      || _window.mozIndexedDB
@@ -133,45 +131,37 @@
 
     // 打开数据库成功
     this._requestSuccess = function(event){
-      console.log('打开数据库成功！');
+      console.log(`打开数据库成功！\nname:    ${ this.name }\nversion: ${ this.version }`);
       if(this.callbackObject.success){
         this.db = event.target.result;
-        this.callbackObject.success.call(this, event.target);
+        this.callbackObject.success.call(this, event.target, event);
       }
     };
 
     // 打开数据库失败
     this._requestError = function(event){
-      console.log('打开数据库失败！');
+      console.log(`打开数据库失败！\nname:    ${ this.name }\nversion: ${ this.version }`);
       if(this.callbackObject.error){
         console.log(event.target.error.message);
-        this.callbackObject.error.call(this, event.target.error);
+        this.callbackObject.error.call(this, event.target.error, event);
       }
     };
 
     // 更新数据库版本
     this._requestUpgradeneeded = function(event){
-      console.log('数据库版本更新！');
+      console.log(`数据库版本更新！\nname:    ${ this.name }\nversion: ${ this.version }`);
       if(this.callbackObject.upgradeneeded){
         this.db = event.target.result;
-        this.callbackObject.upgradeneeded.call(this, event.target);
+        this.callbackObject.upgradeneeded.call(this, event.target, event);
       }
     };
 
     /**
-     * xx秒后关闭数据库
-     * @param {Number} time: 延迟关闭的时间
+     * 关闭数据库
      */
-    this.close = function(time = 100){
-      const close = ()=>{
-        if(IndexedDB._funIng === true){
-          this.db.close();
-          console.log('数据库关闭。');
-        }else{
-          setTimeout(close, time);
-        }
-      };
-      setTimeout(close, time);
+    this.close = function(){
+      this.db.close();
+      console.log(`数据库关闭。\nname:    ${ this.name }\nversion: ${ this.version }`);
     };
 
     /**
@@ -217,9 +207,8 @@
      * 删除ObjectStore
      * @param {String} objectStoreName: ObjectStore名字
      */
-
     this.deleteObjectStore = function(objectStoreName){
-      if(!this.hasObjectStore(objectStoreName)){
+      if(this.hasObjectStore(objectStoreName)){
         this.db.deleteObjectStore(objectStoreName);
         console.log('删除了新的ObjectStore：' + objectStoreName + '。');
       }else{
@@ -248,9 +237,9 @@
   };
 
 
-    /* objectsSore */
+  /* objectsSore */
 
-    /* 初始化 */
+  /* 初始化 */
   function ObjectStore(db, objectStoreName, writeAble){
 
     this.db = db;
@@ -268,13 +257,11 @@
    * @param {Object | Array} obj: 数组添加多个数据，object添加单个数据
    */
   ObjectStore.prototype.add = function(obj){
-    IndexedDB._funIng = true;
     obj = obj instanceof Array ? obj : [obj];
     for(let i = 0, j = obj.length - 1; i <= j; i++){
       this.store.add(obj[i]);
       if(i === j){
         console.log('数据添加成功');
-        IndexedDB._funIng = false;
       }
     }
     return this;
@@ -285,13 +272,11 @@
    * @param {Object | Array} obj: 数组添加多个数据，object添加单个数据
    */
   ObjectStore.prototype.put = function(obj){
-    IndexedDB._funIng = true;
     obj = obj instanceof Array ? obj : [obj];
     for(let i = 0, j = obj.length - 1; i <= j; i++){
       this.store.put(obj[i]);
       if(i === j){
         console.log('数据更新成功');
-        IndexedDB._funIng = false;
       }
     }
     return this;
@@ -299,22 +284,20 @@
 
   /**
    * 删除数据
-   * @param {String | Number | Array} value: 数组添加多个数据，object添加单个数据
+   * @param {String | Number | Array} value: 数组删除多个数据，String、Number删除单个数据
    */
   ObjectStore.prototype.delete = function(value){
-    IndexedDB._funIng = true;
     value = value instanceof Array ? value : [value];
     for(let i = 0, j = value.length - 1; i <= j; i++){
       this.store.delete(value[i]);
       if(i === j){
         console.log('数据删除成功');
-        IndexedDB._funIng = false;
       }
     }
     return this;
   };
 
-    /* 清除数据 */
+  /* 清除数据 */
   ObjectStore.prototype.clear = function(value){
     this.store.clear();
     console.log('数据清除成功');
@@ -331,7 +314,7 @@
 
     function success(event){
       if(callback){
-        callback.call(this, event.target.result, event.target);
+        callback.call(this, event.target.result, event);
       }
     }
 
@@ -360,7 +343,7 @@
 
     function success(event){
       if(callback){
-        callback.call(this, event.target.result, event.target);
+        callback.call(this, event.target.result, event);
       }
     }
 
