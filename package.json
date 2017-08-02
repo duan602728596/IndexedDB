@@ -1,10 +1,11 @@
 {
-  "name": "~indexeddb",
+  "name": "indexeddb-tools",
   "version": "1.0.0",
   "main": "src/IndexedDB.js",
   "keywords": [
     "indexeddb",
-    "~indexeddb"
+	"indexeddb-tools",
+	"tools"
   ],
   "description": "浏览器IndexedDB的封装。",
   "author": {
