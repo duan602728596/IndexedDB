@@ -260,7 +260,7 @@ IndexedDB(name, version, {
       // ...
     });
     或
-    store.cursor(indexName, ‘avbd’, function(result, event){
+    store.cursor(indexName, 'avbd', function(result, event){
       // ...
     });
   }
@@ -272,7 +272,8 @@ IndexedDB(name, version, {
 * '<  5'   小于
 * '<= 5'   小于等于
 * '[5, 8]' 闭区间(5 <= x <= 8)
-* '(5, 8)' 开区间(5 <  x <  8)
+* '(5, 8)' 开区间(5 <  x <  8)   
+
 使用方法：
 ```javascript
 IndexedDB(name, version, {
