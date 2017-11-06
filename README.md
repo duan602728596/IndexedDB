@@ -18,7 +18,7 @@ IndexedDB(name, version, callbackObject = {
 在success或upgradeneeded的回调函数内，可以通过以下方法来获取对应的信息：
 ```javascript
 IndexedDB(name, version, callbackObject = {
-  success: function(etarget, event){
+  success: function(event){
     this.name;            // 数据库名称
     this.version;         // 数据库版本号
     this.callbackObject;  // 回调函数
@@ -35,7 +35,7 @@ IndexedDB.deleteDatabase(databaseName);
 ### 关闭数据库
 ```javascript
 IndexedDB(name, version, callbackObject = {
-  success: function(etarget, event){
+  success: function(event){
     this.close();     // 或
     this.db.close();
   }
@@ -50,8 +50,7 @@ IndexedDB(name, version, callbackObject = {
       this.createObjectStore(objectStoreName, keyPath, [
         {
           name: name,
-          index: index,
-          unique: true
+          index: index
         }
       ])
     }
@@ -66,7 +65,7 @@ this.hasObjectStore(objectStoreName);
 使用方法：
 ```javascript
 IndexedDB(name, version, callbackObject = {
-  upgradeneeded: function(etarget, event){
+  upgradeneeded: function(event){
     this.hasObjectStore(objectStoreName);
   }
 });
@@ -80,13 +79,12 @@ this.createObjectStore(objectStoreName, keyPath, indexArray);
 使用方法：
 ```javascript
 IndexedDB(name, version, callbackObject = {
-  upgradeneeded: function(etarget, event){
+  upgradeneeded: function(event){
     if(!this.hasObjectStore(objectStoreName)){
       this.createObjectStore(objectStoreName, keyPath, [
         {
           name: name,        // key
-          index: index,      // 索引
-          unique: true       // 索引是否唯一
+          index: index       // 索引
         }
       ]);
     }
@@ -111,13 +109,13 @@ IndexedDB(name, version, callbackObject = {
 
 ### 获取ObjectStore
 ```javascript
-this.getObjectStore(objectStoreName, writeAble = true);
+this.getObjectStore(objectStoreName, writeAble = false);
 ```
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
-    const store = this.getObjectStore(objectStoreName); // ObjectStore实例
+  success: function(event){
+    const store = this.getObjectStore(objectStoreName, true); // ObjectStore实例
   }
 });
 ```
@@ -130,8 +128,8 @@ obj可以是一个数组或者一个对象。
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
-    const store = this.getObjectStore(objectStoreName);
+  success: function(event){
+    const store = this.getObjectStore(objectStoreName, true);
     store.add({
       [keyPath]: value1   
       [name]: value2
@@ -160,8 +158,8 @@ obj可以是一个数组或者一个对象。
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
-    const store = this.getObjectStore(objectStoreName);
+  success: function(event){
+    const store = this.getObjectStore(objectStoreName, true);
     store.put({
       [keyPath]: value1   
       [name]: value2
@@ -189,9 +187,10 @@ store.get(keyValue, callback);
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
+  success: function(event){
     const store = this.getObjectStore(objectStoreName);
-    store.get(keyValue, function(result, event){    // 根据主键的值来查找
+    store.get(keyValue, function(event){    // 根据主键的值来查找
+      const result = event.target.result;
       // ...
     });
   }
@@ -208,7 +207,7 @@ value可以是String、Number或Array。
 ```javascript
 IndexedDB(name, version, {
   success: function(etarget, event){
-    const store = this.getObjectStore(objectStoreName);
+    const store = this.getObjectStore(objectStoreName, true);
     store.delete(1);
     // 或
     store.delete([1, 'a']);
@@ -224,7 +223,7 @@ store.clear();
 ```javascript
 IndexedDB(name, version, {
   success: function(etarget, event){
-    const store = this.getObjectStore(objectStoreName);
+    const store = this.getObjectStore(objectStoreName, true);
     store.clear();
   }
 });
@@ -241,7 +240,8 @@ callback回调函数。回调参数为result，result.value为获取的数据，
 IndexedDB(name, version, {
   success: function(etarget, event){
     const store = this.getObjectStore(objectStoreName);
-    store.cursor(indexName, function(result, event){    // 根据其他键索引名称来查找
+    store.cursor(indexName, function(event){    // 根据其他键索引名称来查找
+      const result = event.target.value;
       if(result){
         result.value;       // 查找的数据
         result.continue();  // 继续查找
@@ -260,7 +260,7 @@ IndexedDB(name, version, {
       // ...
     });
     或
-    store.cursor(indexName, 'avbd', function(result, event){
+    store.cursor(indexName, 'name', function(result, event){
       // ...
     });
   }
