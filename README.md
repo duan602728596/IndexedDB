@@ -124,7 +124,7 @@ IndexedDB(name, version, {
 ```javascript
 store.add(obj);
 ```
-obj可以是一个数组或者一个对象。   
+obj的类型可以是Array或者Object。
 使用方法：
 ```javascript
 IndexedDB(name, version, {
@@ -154,7 +154,7 @@ IndexedDB(name, version, {
 ```javascript
 store.put(obj);
 ```
-obj可以是一个数组或者一个对象。   
+obj的类型可以是Array或者Object。
 使用方法：
 ```javascript
 IndexedDB(name, version, {
@@ -201,8 +201,8 @@ IndexedDB(name, version, {
 ```javascript
 store.delete(value);
 ```
-value可以是String、Number或Array。   
-删除数据是根据主键的值来删除的。   
+value可以是string、number或Array。
+删除数据是根据主键的值来删除的。
 使用方法：
 ```javascript
 IndexedDB(name, version, {
@@ -233,7 +233,7 @@ IndexedDB(name, version, {
 ```javascript
 store.cursor(indexName, [range,] callback);
 ```
-range用来选择范围。  
+range用来选择范围。
 callback回调函数。回调参数为result，result.value为获取的数据，result.continue()继续查找。
 使用方法：
 ```javascript
