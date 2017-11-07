@@ -262,7 +262,7 @@ IndexedDB(name, version, {
       // ...
     });
     或
-    store.cursor(indexName, 'name', function(result, event){
+    store.cursor(indexName, 'name', function(event){
       // ...
     });
   }
@@ -281,7 +281,7 @@ IndexedDB(name, version, {
 IndexedDB(name, version, {
   success: function(etarget, event){
     const store = this.getObjectStore(objectStoreName);
-    store.cursor(indexName, '(5, 8)', function(result, event){
+    store.cursor(indexName, '(5, 8)', function(event){
       // ...
     });
   }
