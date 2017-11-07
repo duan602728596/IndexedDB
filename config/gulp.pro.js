@@ -15,7 +15,7 @@ function babelProject(){
 function build(){
   // rollup
   const entry = dirname + '/lib/index.js';
-  const dest = dirname + '/build/IndexedDB.js';
+  const dest = dirname + '/build/IndexedDB-tools.js';
 
   return rollup.rollup({
     input: entry,
