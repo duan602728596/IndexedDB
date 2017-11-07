@@ -36,7 +36,8 @@ IndexedDB.deleteDatabase(databaseName);
 ```javascript
 IndexedDB(name, version, callbackObject = {
   success: function(event){
-    this.close();     // 或
+    this.close();
+    // 或
     this.db.close();
   }
 });
@@ -46,14 +47,12 @@ IndexedDB(name, version, callbackObject = {
 ```javascript
 IndexedDB(name, version, callbackObject = {
   upgradeneeded: function(etarget, event){
-     if(!this.hasObjectStore(objectStoreName)){
-      this.createObjectStore(objectStoreName, keyPath, [
-        {
-          name: name,
-          index: index
-        }
-      ])
-    }
+    this.createObjectStore(objectStoreName, keyPath, [
+      {
+        name: name,
+        index: index
+      }
+    ]);
   }
 });
 ```
@@ -80,14 +79,12 @@ this.createObjectStore(objectStoreName, keyPath, indexArray);
 ```javascript
 IndexedDB(name, version, callbackObject = {
   upgradeneeded: function(event){
-    if(!this.hasObjectStore(objectStoreName)){
-      this.createObjectStore(objectStoreName, keyPath, [
-        {
-          name: name,        // key
-          index: index       // 索引
-        }
-      ]);
-    }
+    this.createObjectStore(objectStoreName, keyPath, [
+      {
+        name: name,        // key
+        index: index       // 索引
+      }
+    ]);
   }
 });
 ```
@@ -100,9 +97,7 @@ this.deleteObjectStore(objectStoreName);
 ```javascript
 IndexedDB(name, version, callbackObject = {
   upgradeneeded: function(etarget, event){
-    if(this.hasObjectStore(objectStoreName)){
-      this.deleteObjectStore(objectStoreName);
-    }
+    this.deleteObjectStore(objectStoreName);
   }
 });
 ```
