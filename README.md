@@ -2,6 +2,13 @@
 
 ## 使用方法：
 
+### 引入模块
+```javascript
+import IndexedDB from 'indexeddb-tools';
+// 或
+window.IndexedDB;
+```
+
 ### 连接数据库
 ```javascript
 /**
