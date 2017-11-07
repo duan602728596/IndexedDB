@@ -1,1 +1,3 @@
-module.exports = require('./IndexedDB');
+import IndexedDB from './IndexedDB';
+
+export default IndexedDB;
