@@ -22,7 +22,7 @@
   "scripts": {
     "start": "npm run cleanlib && npm run cleanbuild && cross-env NODE_ENV=development ./node_modules/.bin/gulp",
     "build": "npm run cleanlib && npm run cleanbuild && cross-env NODE_ENV=production ./node_modules/.bin/gulp",
-    "init": "./node_modules/.bin/mocha init test",
+    "inittest": "./node_modules/.bin/mocha init test",
     "test": "node ./config/test.js",
     "cleanlib": "./node_modules/.bin/rimraf lib",
     "cleanbuild": "./node_modules/.bin/rimraf build"
