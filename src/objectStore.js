@@ -77,7 +77,7 @@ class ObjectStore{
   };
 
   /* 清除数据 */
-  clear(): void{
+  clear(): this{
     this.store.clear();
     console.log('数据清除成功');
     return this;
