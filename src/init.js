@@ -10,6 +10,7 @@ class Init{
     error: Function,
     upgradeneeded: Function
   };
+  db: any;
 
   constructor(indexeddb, name, version, callbackObject): void{
     this.indexeddb = indexeddb;            // 数据库实例
