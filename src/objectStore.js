@@ -1,6 +1,6 @@
 import getRange from './getRange';
 
-/*
+/**
  * 操作objectStore
  * @param { Object } db            : db实例
  * @param { string } objectStoreNam: objectStore名字
@@ -91,7 +91,7 @@ class ObjectStore{
    */
   get(value: string | number, callback: Function): this{
     const g: any = this.store.get(value);
-    const success: Function = (event: Object): void=>{
+    const success: Function = (event: Event): void=>{
       if(callback) callback.call(this, event);  // event.target.result
     };
 
@@ -113,7 +113,7 @@ class ObjectStore{
     const index: Object = this.store.index(indexName);
     const range: any = arguments[2] ? getRange(arguments[1]) : null;
     const cursor: any = range === null ? index.openCursor() : index.openCursor(range);
-    const success: Function = (event: Object): void=>{
+    const success: Function = (event: Event): void=>{
       if(callback) callback.call(this, event); // event.target.result.value && event.target.result.continue()
     };
 

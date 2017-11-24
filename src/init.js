@@ -28,7 +28,7 @@ class Init{
   }
 
   /* 打开数据库成功 */
-  openSuccess(event: Object): void{
+  openSuccess(event: Event): void{
     if(this.callbackObject.success){
       this.db = event.target.result;
       this.callbackObject.success.call(this, event);
@@ -37,7 +37,7 @@ class Init{
   }
 
   /* 打开数据库失败 */
-  openError(event: Object): void{
+  openError(event: Event): void{
     if(this.callbackObject.error){
       console.error(event.target.error.message);
       this.callbackObject.error.call(this, event);    // event.target.error
@@ -46,7 +46,7 @@ class Init{
   }
 
   /* 更新数据库版本 */
-  openUpgradeneeded(event: Object): void{
+  openUpgradeneeded(event: Event): void{
     if(this.callbackObject.upgradeneeded){
       this.db = event.target.result;
       this.callbackObject.upgradeneeded.call(this, event);
