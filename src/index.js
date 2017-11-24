@@ -1,10 +1,10 @@
 import Init from './init';
 
-/* 浏览器兼容 */
-const indexeddb = window.indexedDB
-  || window.webkitIndexedDB
-  || window.mozIndexedDB
-  || window.msIndexedDB;
+/* 兼容浏览器和webworker */
+const indexeddb: any = indexedDB
+  || webkitIndexedDB
+  || mozIndexedDB
+  || msIndexedDB;
 
 /**
  * 初始化数据库

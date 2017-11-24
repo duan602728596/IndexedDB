@@ -190,4 +190,36 @@ describe('数据库测试', function(){
 
   });
 
+  describe('webWorker', function(){
+
+    it('test1', async function(){
+      const work = new Worker('./worker.js');
+
+      work.postMessage({
+        data: {
+          table: 'table_3',
+          key: 'age',
+          query: '>=30'
+        }
+      });
+
+      work.addEventListener('message', function(event){
+        expect(quickSort(event.data.data, 'id')).to.eql([
+          {
+            id: 4,
+            username: '王羲之',
+            age: 106,
+            sex: '男'
+          },
+          {
+            id: 5,
+            username: '舒克',
+            age: 32,
+            sex: '男'
+          }
+        ]);
+        work.terminate();
+      }, false);
+    });
+  });
 });
