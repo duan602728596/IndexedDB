@@ -2,7 +2,7 @@ import ObjectStore from './objectStore';
 
 /* 初始化数据库 */
 class Init{
-  indexeddb: any;
+  indexeddb: Object;
   name: string;
   version: number;
   callbackObject: {
@@ -10,9 +10,9 @@ class Init{
     error: Function,
     upgradeneeded: Function
   };
-  db: any;
+  db: Object;
 
-  constructor(indexeddb: any, name: string, version: number, callbackObject: {
+  constructor(indexeddb: Object, name: string, version: number, callbackObject: {
     success: Function,
     error: Function,
     upgradeneeded: Function
