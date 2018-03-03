@@ -4,7 +4,6 @@ const plumber = require('gulp-plumber');
 const babel = require('gulp-babel');
 const rollup = require('rollup');
 const errorHandler = require('./errorHandler.js');
-const babelConfig = require('./babel.config');
 
 let dirname = null;
 
@@ -16,7 +15,7 @@ function babelProject(){
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    .pipe(babel(babelConfig))
+    .pipe(babel())
     .pipe(gulp.dest(dirname + '/lib'));
 }
 
