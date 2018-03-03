@@ -12,7 +12,11 @@ class Init{
   };
   db: any;
 
-  constructor(indexeddb, name, version, callbackObject): void{
+  constructor(indexeddb: any, name: string, version: number, callbackObject: {
+    success: Function,
+    error: Function,
+    upgradeneeded: Function
+  }): void{
     this.indexeddb = indexeddb;            // 数据库实例
     this.name = name;                      // 数据库名称
     this.version = version;                // 版本号
@@ -81,7 +85,7 @@ class Init{
   createObjectStore(objectStoreName: string, keyPath: string, indexArray: Array): this{
     if(!this.hasObjectStore(objectStoreName)){
       const store: Object = this.db.createObjectStore(objectStoreName, {
-        keyPath: keyPath
+        keyPath
       });
 
       // 创建索引键值
@@ -116,7 +120,7 @@ class Init{
     }
 
     return this;
-  };
+  }
 
   /**
    * 获取操作ObjectStore
@@ -124,9 +128,9 @@ class Init{
    * @param { boolean } writeAble     : 只读还是读写
    * @return { ObjectStore }
    */
-  getObjectStore(objectStoreName: string, writeAble: boolean = false):  ObjectStore{
+  getObjectStore(objectStoreName: string, writeAble: boolean = false): ObjectStore{
     return new ObjectStore(this.db, objectStoreName, writeAble);
-  };
+  }
 }
 
 export default Init;

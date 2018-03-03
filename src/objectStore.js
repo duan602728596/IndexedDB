@@ -74,14 +74,14 @@ class ObjectStore{
     }
 
     return this;
-  };
+  }
 
   /* 清除数据 */
   clear(): this{
     this.store.clear();
     console.log('数据清除成功');
     return this;
-  };
+  }
 
   /**
    * 获取数据

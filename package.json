@@ -25,23 +25,27 @@
     "inittest": "./node_modules/.bin/mocha init test",
     "test": "node ./config/test.js",
     "cleanlib": "./node_modules/.bin/rimraf lib",
-    "cleanbuild": "./node_modules/.bin/rimraf build"
+    "cleanbuild": "./node_modules/.bin/rimraf build",
+    "eslint": "./node_modules/.bin/eslint src"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.32",
-    "@babel/preset-env": "^7.0.0-beta.32",
-    "@babel/preset-flow": "^7.0.0-beta.32",
-    "browser-sync": "^2.18.13",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-flow": "^7.0.0-beta.40",
+    "babel-eslint": "^8.2.2",
+    "browser-sync": "^2.23.6",
     "chai": "^4.1.2",
-    "cross-env": "^5.1.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.2",
+    "eslint-plugin-flowtype": "^2.46.1",
     "gulp": "gulpjs/gulp#4.0",
-    "gulp-babel": "^8.0.0-beta.0",
-    "gulp-changed": "^3.1.1",
-    "gulp-notify": "^3.0.0",
-    "gulp-plumber": "^1.1.0",
-    "mocha": "^4.0.1",
+    "gulp-babel": "^8.0.0-beta.1",
+    "gulp-changed": "^3.2.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "mocha": "^5.0.1",
     "rimraf": "^2.6.2",
-    "rollup": "^0.50.0",
-    "rollup-plugin-uglify": "^2.0.1"
+    "rollup": "^0.56.3",
+    "rollup-plugin-uglify": "^3.0.0"
   }
 }

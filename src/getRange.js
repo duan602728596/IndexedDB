@@ -11,7 +11,7 @@
  * @param { string } range: 传递字符串
  * @return
  */
-function getRange(range): any{
+function getRange(range: any): any{
 
   if(typeof range === 'number'){
 
