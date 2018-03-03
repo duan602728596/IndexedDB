@@ -1,3 +1,4 @@
+/* 浏览器多线程（worker）内测试 */
 importScripts('../build/IndexedDB-tools.js');
 importScripts('./script.js');
 

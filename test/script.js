@@ -16,6 +16,7 @@ const idx = [
   }
 ];
 
+/* 初始化数据库 */
 function initDb(){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -38,6 +39,7 @@ function initDb(){
   });
 }
 
+/* 初始化数据库表 */
 function initTable(name, data){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -51,6 +53,7 @@ function initTable(name, data){
   });
 }
 
+/* 获取数据 */
 function getData(name, value){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -66,6 +69,7 @@ function getData(name, value){
   });
 }
 
+/* 更新数据 */
 function putData(name, data){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -79,6 +83,7 @@ function putData(name, data){
   });
 }
 
+/* 利用游标查找数据 */
 function cursorData(name){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -101,6 +106,7 @@ function cursorData(name){
   });
 }
 
+/* 查找数据 */
 function queryData(name, index, query){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -123,6 +129,7 @@ function queryData(name, index, query){
   });
 }
 
+/* 删除数据库内的数据 */
 function deleteData(name, value){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {
@@ -136,6 +143,7 @@ function deleteData(name, value){
   });
 }
 
+/* 清除数据库 */
 function clearData(name, value){
   return new Promise((resolve, reject)=>{
     IndexedDB(dbName, version, {

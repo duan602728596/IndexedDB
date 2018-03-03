@@ -1,5 +1,6 @@
 const expect = chai.expect;
 
+/* 快速排序 */
 function quickSort(rawArray, key){
   const len = rawArray.length;
   if(len <= 1) return rawArray;
@@ -28,7 +29,6 @@ function quickSort(rawArray, key){
 }
 
 describe('数据库测试', function(){
-
   describe('初始化数据库', function(){
 
     it('初始化', async function(){
