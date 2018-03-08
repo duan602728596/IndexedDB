@@ -1,7 +1,7 @@
 import Init from './init';
 
 /* 兼容浏览器和webworker */
-const indexeddb: any = indexedDB || webkitIndexedDB || mozIndexedDB || msIndexedDB;
+const indexeddb: IndexedDB = indexedDB || webkitIndexedDB || mozIndexedDB || msIndexedDB;
 
 /**
  * 初始化数据库
