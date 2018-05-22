@@ -12,14 +12,14 @@ window.IndexedDB;
 ### 连接数据库
 ```javascript
 /**
- * name            连接的数据库名  
+ * name            连接的数据库名
  * version         数据库版本号
  * callbackObject  数据库创建或连接成功后的回调函数
  */
 IndexedDB(name, version, callbackObject = {
   success: fn1,         // 数据库连接成功的回调函数
   error: fn2,           // 数据库连接失败的回调函数
-  upgradeneeded: fn3    // 数据库首次创建成功的回调函数 
+  upgradeneeded: fn3    // 数据库首次创建成功的回调函数
 });
 ```
 在success或upgradeneeded的回调函数内，可以通过以下方法来获取对应的信息：
@@ -53,7 +53,7 @@ IndexedDB(name, version, callbackObject = {
 ### 数据库创建一个ObjectStore来存储数据
 ```javascript
 IndexedDB(name, version, callbackObject = {
-  upgradeneeded: function(etarget, event){
+  upgradeneeded: function(event){
     this.createObjectStore(objectStoreName, keyPath, [
       {
         name: name,
@@ -103,7 +103,7 @@ this.deleteObjectStore(objectStoreName);
 使用方法：
 ```javascript
 IndexedDB(name, version, callbackObject = {
-  upgradeneeded: function(etarget, event){
+  upgradeneeded: function(event){
     this.deleteObjectStore(objectStoreName);
   }
 });
@@ -133,17 +133,17 @@ IndexedDB(name, version, {
   success: function(event){
     const store = this.getObjectStore(objectStoreName, true);
     store.add({
-      [keyPath]: value1   
+      [keyPath]: value1
       [name]: value2
     });
     // 或
     store.add([
       {
-        [keyPath]: value1   
+        [keyPath]: value1
         [name]: value2
       },
       {
-        [keyPath]: value1   
+        [keyPath]: value1
         [name]: value2
       },
       ...
@@ -163,17 +163,17 @@ IndexedDB(name, version, {
   success: function(event){
     const store = this.getObjectStore(objectStoreName, true);
     store.put({
-      [keyPath]: value1   
+      [keyPath]: value1
       [name]: value2
     });
     // 或
     store.put([
       {
-        [keyPath]: value1   
+        [keyPath]: value1
         [name]: value2
       },
       {
-        [keyPath]: value1   
+        [keyPath]: value1
         [name]: value2
       },
       ...
@@ -208,7 +208,7 @@ value可以是string、number或Array。
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
+  success: function(event){
     const store = this.getObjectStore(objectStoreName, true);
     store.delete(1);
     // 或
@@ -224,7 +224,7 @@ store.clear();
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
+  success: function(event){
     const store = this.getObjectStore(objectStoreName, true);
     store.clear();
   }
@@ -240,7 +240,7 @@ callback回调函数。回调参数为result，result.value为获取的数据，
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
+  success: function(event){
     const store = this.getObjectStore(objectStoreName);
     store.cursor(indexName, function(event){    // 根据其他键索引名称来查找
       const result = event.target.value;
@@ -252,11 +252,11 @@ IndexedDB(name, version, {
   }
 });
 ```
-查询指定值   
+查询指定值
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
+  success: function(event){
     const store = this.getObjectStore(objectStoreName);
     store.cursor(indexName, 5, function(result, event){
       // ...
@@ -274,12 +274,12 @@ IndexedDB(name, version, {
 * '<  5'   小于
 * '<= 5'   小于等于
 * '[5, 8]' 闭区间(5 <= x <= 8)
-* '(5, 8)' 开区间(5 <  x <  8)   
+* '(5, 8)' 开区间(5 <  x <  8)
 
 使用方法：
 ```javascript
 IndexedDB(name, version, {
-  success: function(etarget, event){
+  success: function(event){
     const store = this.getObjectStore(objectStoreName);
     store.cursor(indexName, '(5, 8)', function(event){
       // ...
