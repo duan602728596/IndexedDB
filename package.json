@@ -29,23 +29,23 @@
     "eslint": "./node_modules/.bin/eslint src"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-flow": "^7.0.0-beta.40",
-    "babel-eslint": "^8.2.2",
-    "browser-sync": "^2.23.6",
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/preset-flow": "^7.0.0-beta.51",
+    "babel-eslint": "^8.2.3",
+    "browser-sync": "^2.24.4",
     "chai": "^4.1.2",
-    "cross-env": "^5.1.3",
-    "eslint": "^4.18.2",
-    "eslint-plugin-flowtype": "^2.46.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.49.3",
     "gulp": "gulpjs/gulp#4.0",
-    "gulp-babel": "^8.0.0-beta.1",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-changed": "^3.2.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
-    "mocha": "^5.0.1",
+    "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.56.3",
-    "rollup-plugin-uglify": "^3.0.0"
+    "rollup": "^0.61.1",
+    "rollup-plugin-uglify": "^4.0.0"
   }
 }

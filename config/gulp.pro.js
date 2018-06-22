@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const rollup = require('rollup');
-const uglify = require('rollup-plugin-uglify');
+const uglify = require('rollup-plugin-uglify').uglify;
 
 let dirname = null;
 
