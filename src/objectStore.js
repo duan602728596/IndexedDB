@@ -8,10 +8,10 @@ import getRange from './getRange';
  */
 
 class ObjectStore{
-  db: any;
-  store: any;
+  db: Object;
+  store: Object;
 
-  constructor(db: any, objectStoreName: string, writeAble: boolean): this{
+  constructor(db: Object, objectStoreName: string, writeAble: boolean): this{
     this.db = db;
 
     const wa: string = writeAble === true ? 'readwrite' : 'readonly';
@@ -90,7 +90,7 @@ class ObjectStore{
    * @return { this }
    */
   get(value: string | number, callback: Function): this{
-    const g: any = this.store.get(value);
+    const g: Object = this.store.get(value);
     const success: Function = (event: Event): void=>{
       if(callback) callback.call(this, event);  // event.target.result
     };
@@ -111,8 +111,8 @@ class ObjectStore{
   cursor(indexName: string, /* range, callback */): this{
     const callback: Function = typeof arguments[1] === 'function' ? arguments[1] : arguments[2];
     const index: Object = this.store.index(indexName);
-    const range: any = arguments[2] ? getRange(arguments[1]) : null;
-    const cursor: any = range === null ? index.openCursor() : index.openCursor(range);
+    const range: ?(string | number | boolean) = arguments[2] ? getRange(arguments[1]) : null;
+    const cursor: Object = range === null ? index.openCursor() : index.openCursor(range);
     const success: Function = (event: Event): void=>{
       if(callback) callback.call(this, event); // event.target.result.value && event.target.result.continue()
     };
