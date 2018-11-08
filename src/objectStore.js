@@ -1,4 +1,5 @@
 import getRange from './getRange';
+import env from './env';
 
 /**
  * 操作objectStore
@@ -32,7 +33,8 @@ class ObjectStore{
 
     for(let i: number = 0, j: number = data.length - 1; i <= j; i++){
       this.store.add(data[i]);
-      if(i === j){
+
+      if(i === j && env === 'development'){
         console.log('数据添加成功');
       }
     }
@@ -50,7 +52,8 @@ class ObjectStore{
 
     for(let i: number = 0, j: number = data.length - 1; i <= j; i++){
       this.store.put(data[i]);
-      if(i === j){
+
+      if(i === j && env === 'development'){
         console.log('数据更新成功');
       }
     }
@@ -68,7 +71,8 @@ class ObjectStore{
 
     for(let i: number = 0, j: number = data.length - 1; i <= j; i++){
       this.store.delete(data[i]);
-      if(i === j){
+
+      if(i === j && env === 'development'){
         console.log('数据删除成功');
       }
     }
@@ -79,7 +83,11 @@ class ObjectStore{
   /* 清除数据 */
   clear(): this{
     this.store.clear();
-    console.log('数据清除成功');
+
+    if(env === 'development'){
+      console.log('数据清除成功');
+    }
+
     return this;
   }
 

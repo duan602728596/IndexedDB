@@ -1,4 +1,5 @@
 import Init from './init';
+import env from './env';
 
 /* 兼容浏览器和webworker */
 const indexeddb: IndexedDB = indexedDB || webkitIndexedDB || mozIndexedDB || msIndexedDB;
@@ -20,6 +21,7 @@ type cbObj = {
 
 function IndexedDB(name: string, version: number, callbackObject: cbObj = {}): Init{
   IndexedDB.prototype.indexeddb = indexeddb;
+
   return new Init(indexeddb, name, version, callbackObject);
 }
 
@@ -29,7 +31,10 @@ function IndexedDB(name: string, version: number, callbackObject: cbObj = {}): I
  */
 IndexedDB.deleteDatabase = function(databaseName: string): void{
   indexeddb.deleteDatabase(databaseName);
-  console.log(`删除数据库：${ databaseName }。`);
+
+  if(env === 'development'){
+    console.log(`删除数据库：${ databaseName }。`);
+  }
 };
 
 export default IndexedDB;

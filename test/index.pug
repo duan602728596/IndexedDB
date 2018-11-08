@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='renderer' content='webkit')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href=require('./mocha/mocha.css'))
+    title schema-form
+  body
+    div#mocha
+    script(type='text/javascript' src=require('./mocha/mocha'))
+    script(type='text/javascript' src=require('chai/chai'))
+    script(type='text/javascript') mocha.timeout(180000);
+    script(type='text/javascript') mocha.setup('bdd');

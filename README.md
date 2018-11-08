@@ -287,3 +287,7 @@ IndexedDB(name, version, {
   }
 });
 ```
+
+## 测试用例
+
+运行`yarn test`或`npm run test`，在浏览器打开`http://127.0.0.1:5050`运行测试用例。

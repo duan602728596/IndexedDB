@@ -1,4 +1,5 @@
 import ObjectStore from './objectStore';
+import env from './env';
 
 /* 初始化数据库 */
 class Init{
@@ -38,7 +39,10 @@ class Init{
       this.db = event.target.result;
       this.callbackObject.success.call(this, event);
     }
-    console.log(`打开数据库成功！\nname:    ${ this.name }\nversion: ${ this.version }`);
+
+    if(env === 'development'){
+      console.log(`打开数据库成功！\nname:    ${ this.name }\nversion: ${ this.version }`);
+    }
   }
 
   /* 打开数据库失败 */
@@ -47,7 +51,10 @@ class Init{
       console.error(event.target.error.message);
       this.callbackObject.error.call(this, event);    // event.target.error
     }
-    console.log(`打开数据库失败！\nname:    ${ this.name }\nversion: ${ this.version }`);
+
+    if(env === 'development'){
+      console.log(`打开数据库失败！\nname:    ${ this.name }\nversion: ${ this.version }`);
+    }
   }
 
   /* 更新数据库版本 */
@@ -56,14 +63,20 @@ class Init{
       this.db = event.target.result;
       this.callbackObject.upgradeneeded.call(this, event);
     }
-    console.log(`数据库版本更新！\nname:    ${ this.name }\nversion: ${ this.version }`);
+
+    if(env === 'development'){
+      console.log(`数据库版本更新！\nname:    ${ this.name }\nversion: ${ this.version }`);
+    }
   }
 
   /* 关闭数据库 */
   close(): void{
     this.db.close();
     this.db = null;
-    console.log(`数据库关闭。\nname:    ${ this.name }\nversion: ${ this.version }`);
+
+    if(env === 'development'){
+      console.log(`数据库关闭。\nname:    ${ this.name }\nversion: ${ this.version }`);
+    }
   }
 
   /**
@@ -98,7 +111,9 @@ class Init{
         }
       }
 
-      console.log(`创建了新的ObjectStore：${ objectStoreName }。`);
+      if(env === 'development'){
+        console.log(`创建了新的ObjectStore：${ objectStoreName }。`);
+      }
     }else{
       console.warn(`ObjectStore：${ objectStoreName }已存在。`);
     }
@@ -114,7 +129,10 @@ class Init{
   deleteObjectStore(objectStoreName: string): this{
     if(this.hasObjectStore(objectStoreName)){
       this.db.deleteObjectStore(objectStoreName);
-      console.log(`删除了新的ObjectStore：${ objectStoreName }。`);
+
+      if(env === 'development'){
+        console.log(`删除了新的ObjectStore：${ objectStoreName }。`);
+      }
     }else{
       console.warn(`ObjectStore：${ objectStoreName }不存在。`);
     }

@@ -1,5 +1,5 @@
 /* 测试数据 */
-const data1 = [
+export const data1: Array = [
   {
     id: 1,
     username: '小明',
@@ -20,7 +20,7 @@ const data1 = [
   }
 ];
 
-const data2 = [
+export const data2: Array = [
   {
     id: 1,
     username: '小明',
@@ -41,7 +41,7 @@ const data2 = [
   }
 ];
 
-const data3 = [
+export const data3: Array = [
   {
     id: 1,
     username: '小明',

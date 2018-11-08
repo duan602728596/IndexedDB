@@ -14,10 +14,10 @@
 function getRange(range: any): any{
 
   if(typeof range === 'number'){
-
     return range;
+  }
 
-  }else if(typeof range === 'string'){
+  if(typeof range === 'string'){
     // 对字符串进行判断
 
     // 大于
