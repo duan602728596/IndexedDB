@@ -1,7 +1,7 @@
 module.exports = {
   presets: [
     [
-      '@babel/env',
+      '@babel/preset-env',
       {
         targets: {
           ie: 11,
@@ -14,7 +14,7 @@ module.exports = {
         useBuiltIns: false
       }
     ],
-    '@babel/flow'
+    '@babel/preset-flow'
   ],
   plugins: ['@babel/plugin-proposal-optional-chaining']
 };
