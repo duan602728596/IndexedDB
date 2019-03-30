@@ -1,0 +1,10 @@
+# node
+node_modules
+
+# build
+lib
+es
+build
+
+# test
+tests/mocha/mocha.js
