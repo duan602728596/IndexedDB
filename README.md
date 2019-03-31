@@ -189,7 +189,7 @@ IndexedDB(name, version, {
 store.put(obj);
 ```
 
-obj的类型可以是Array或者Object。   
+obj的类型可以是Array<object>或者object。   
 
 使用方法：
 
